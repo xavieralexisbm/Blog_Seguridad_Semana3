@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Criptografía Asimétrica | Semana 3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__badge">Semana 3</span>
+      <h1>Criptografía Asimétrica</h1>
+      <p class="header__subtitle">
+        Blog académico – Seguridad en el Desarrollo de Software
+      </p>
+    </div>
+
+    <nav class="nav">
+      <button class="nav__link" data-target="intro">Inicio</button>
+      <button class="nav__link" data-target="claves">Claves pública y privada</button>
+      <button class="nav__link" data-target="firma">Firma digital</button>
+      <button class="nav__link" data-target="asimetrico">Criptosistema de clave pública</button>
+      <button class="nav__link" data-target="comparacion">Simétrico vs asimétrico</button>
+      <button class="nav__link" data-target="caso">Caso práctico en Python</button>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle">
+      🌙 Modo oscuro
+    </button>
+  </header>
+
+  <main class="main">
+    <!-- INTRO -->
+    <section id="intro" class="section section--active">
+      <h2>Introducción</h2>
+      <p>
+        Esta página corresponde a la <strong>Semana 3</strong> de la asignatura
+        <em>Seguridad en el Desarrollo de Software</em>. El objetivo es explicar
+        de forma clara y práctica los conceptos de
+        <strong>criptografía asimétrica</strong>, el uso de
+        <strong>claves pública y privada</strong>, la
+        <strong>firma digital</strong> y las diferencias frente al cifrado
+        simétrico visto en la Semana 2.
+      </p>
+      <p>
+        Además, se presenta un <strong>caso práctico en Python</strong> usando
+        Visual Studio Code, donde se genera un par de claves RSA, se cifra y se
+        descifra un mensaje, y se crea y verifica una firma digital.
+      </p>
+      <div class="highlight">
+        💡 Consejo: puedes usar el menú superior para navegar entre los temas
+        como si fueran entradas de un blog.
+      </div>
+    </section>
+
+    <!-- CLAVES -->
+    <section id="claves" class="section">
+      <h2>¿Qué son las claves pública y privada?</h2>
+      <p>
+        La <strong>criptografía asimétrica</strong> se basa en un
+        <strong>par de claves</strong>:
+      </p>
+      <ul>
+        <li>
+          <strong>Clave pública:</strong> se puede compartir libremente. Cualquiera
+          puede utilizarla para cifrar información o para verificar una firma
+          digital.
+        </li>
+        <li>
+          <strong>Clave privada:</strong> debe mantenerse en secreto. Solo el
+          dueño de la clave privada puede descifrar lo que fue cifrado con su
+          clave pública o generar firmas digitales válidas.
+        </li>
+      </ul>
+      <p>
+        Ambas claves están relacionadas matemáticamente. Lo que se cifra con la
+        clave pública solo puede descifrarse con la clave privada correspondiente,
+        y viceversa. De esta forma se evita compartir secretos por la red, a
+        diferencia del cifrado simétrico, donde todos deben conocer la misma
+        clave.
+      </p>
+    </section>
+
+    <!-- FIRMA DIGITAL -->
+    <section id="firma" class="section">
+      <h2>¿Qué es la firma digital y cuál es su importancia?</h2>
+      <p>
+        Una <strong>firma digital</strong> es un mecanismo criptográfico que
+        permite:
+      </p>
+      <ul>
+        <li><strong>Autenticidad:</strong> saber quién envió el mensaje.</li>
+        <li>
+          <strong>Integridad:</strong> detectar si el contenido fue modificado.
+        </li>
+        <li>
+          <strong>No repudio:</strong> el emisor no puede negar haber firmado.
+        </li>
+      </ul>
+      <p>
+        Técnicamente, el emisor calcula un resumen del mensaje (hash) y lo firma
+        con su <strong>clave privada</strong>. El receptor usa la
+        <strong>clave pública</strong> del emisor para verificar si la firma es
+        válida. Si la verificación es correcta, se garantiza que el mensaje
+        proviene del emisor y que no fue alterado.
+      </p>
+      <p>
+        La firma digital es esencial en <em>banca electrónica</em>,
+        <em>comercio en línea</em>, <em>certificados digitales</em> y en
+        general en cualquier sistema que requiera trazabilidad y confianza.
+      </p>
+    </section>
+
+    <!-- CRIPTOSISTEMA ASIMÉTRICO -->
+    <section id="asimetrico" class="section">
+      <h2>¿Qué es un criptosistema de clave pública?</h2>
+      <p>
+        Un <strong>criptosistema de clave pública</strong> es aquel en el que se
+        utilizan dos claves distintas para las operaciones criptográficas:
+      </p>
+      <ul>
+        <li>
+          La <strong>clave pública</strong> se usa para cifrar mensajes o para
+          verificar firmas.
+        </li>
+        <li>
+          La <strong>clave privada</strong> se usa para descifrar mensajes o
+          para firmar digitalmente.
+        </li>
+      </ul>
+      <p>
+        Entre los algoritmos más representativos se encuentran:
+      </p>
+      <ul>
+        <li><strong>RSA</strong> (Rivest-Shamir-Adleman).</li>
+        <li><strong>ECC</strong> (Elliptic Curve Cryptography).</li>
+        <li><strong>DSA</strong> (Digital Signature Algorithm).</li>
+      </ul>
+      <p>
+        Estos algoritmos se usan en protocolos como <strong>HTTPS/TLS</strong>,
+        en la generación de <strong>certificados digitales</strong>, en
+        <strong>firmas de documentos</strong> y en muchas plataformas de
+        autenticación y banca digital.
+      </p>
+    </section>
+
+    <!-- COMPARACIÓN -->
+    <section id="comparacion" class="section">
+      <h2>Diferencias entre cifrado simétrico y asimétrico</h2>
+
+      <div class="table">
+        <div class="table__row table__row--header">
+          <div>Aspecto</div>
+          <div>Simétrico</div>
+          <div>Asimétrico</div>
+        </div>
+        <div class="table__row">
+          <div>Número de claves</div>
+          <div>Una sola clave compartida.</div>
+          <div>Par de claves (pública y privada).</div>
+        </div>
+        <div class="table__row">
+          <div>Velocidad</div>
+          <div>Muy rápido, ideal para grandes volúmenes de datos.</div>
+          <div>Más lento, se usa sobre todo para intercambio de claves y firmas.</div>
+        </div>
+        <div class="table__row">
+          <div>Distribución de claves</div>
+          <div>Hay que compartir la clave secreta con todos los participantes.</div>
+          <div>Solo se distribuye la clave pública; la privada nunca se comparte.</div>
+        </div>
+        <div class="table__row">
+          <div>Casos de uso típicos</div>
+          <div>Bases de datos, backups, discos, VPN.</div>
+          <div>Certificados, autenticación, banca digital, blockchain.</div>
+        </div>
+      </div>
+
+      <p class="note">
+        En la práctica, los sistemas modernos suelen combinar ambos tipos:
+        <strong>asimétrico</strong> para intercambiar claves de forma segura y
+        <strong>simétrico</strong> para cifrar grandes cantidades de datos de
+        manera eficiente.
+      </p>
+    </section>
+
+    <!-- CASO PRÁCTICO -->
+    <section id="caso" class="section">
+      <h2>Caso práctico en Python (VS Code + RSA)</h2>
+      <p>
+        Para la parte práctica de la Semana 3 se implementó un ejemplo en
+        <strong>Python</strong>, usando la librería <code>cryptography</code>
+        y el algoritmo <strong>RSA</strong>. El archivo se llama
+        <code>cifrado_asimetrico_rsa.py</code> y se encuentra en la carpeta
+        <code>SEMANA 3</code> del repositorio.
+      </p>
+
+      <ol>
+        <li>Se genera un par de claves: <strong>privada</strong> y <strong>pública</strong>.</li>
+        <li>La clave pública se usa para <strong>cifrar</strong> un mensaje.</li>
+        <li>La clave privada se usa para <strong>descifrar</strong> ese mensaje.</li>
+        <li>Con la clave privada se genera una <strong>firma digital</strong>.</li>
+        <li>Con la clave pública se <strong>verifica</strong> la firma.</li>
+      </ol>
+
+      <p>Fragmento simplificado del código:</p>
+
+      <pre class="code-block"><code># Generación de claves RSA
+from cryptography.hazmat.primitives.asymmetric import rsa
+
+clave_privada = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048
+)
+clave_publica = clave_privada.public_key()
+
+# Cifrar y descifrar un mensaje
+mensaje = "Mensaje confidencial"
+mensaje_cifrado = clave_publica.encrypt(...)
+mensaje_descifrado = clave_privada.decrypt(...)
+
+# Crear y verificar una firma digital
+firma = clave_privada.sign(...)
+clave_publica.verify(firma, ...)</code></pre>
+
+      <p>
+        De esta manera, el ejemplo en Python refuerza los conceptos teóricos:
+        se ve claramente cómo se usan las dos claves y cómo la firma digital
+        garantiza autenticidad e integridad.
+      </p>
+
+      <a
+        class="button"
+        href="https://github.com/xavieralexisbm/Seguridad_Desarrollo_de_Software"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver código completo en GitHub
+      </a>
+    </section>
+  </main>
+
+  <button id="scrollTopBtn" class="scroll-top">↑</button>
+
+  <footer class="footer">
+    <p>Seguridad en el Desarrollo de Software – Semana 3</p>
+    <p>Autor: Xavier Alexis • 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
